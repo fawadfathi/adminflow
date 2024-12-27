@@ -109,10 +109,10 @@ export function DashboardTable({ product }: ProductTableProps) {
                           <TableCell className="hidden lg:block">
                             <Badge variant="outline">{pro.category}</Badge>
                           </TableCell>
-                          <TableCell className="text-center">
+                          <TableCell className="text-center text-red-600">
                             {pro.price}
                           </TableCell>
-                          <TableCell className="hidden md:table-cell text-red-600 text-center">
+                          <TableCell className="hidden md:table-cell text-center">
                             25
                           </TableCell>
                           <TableCell className="hidden md:table-cell">

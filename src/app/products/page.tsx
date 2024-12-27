@@ -13,13 +13,13 @@ const Products = () => {
       >
         <div className="flex flex-col items-center gap-1 text-center">
           <h3 className="text-2xl font-bold tracking-tight">
-            You have no products
+            You Can Add Products
           </h3>
           <p className="text-sm text-muted-foreground">
             You can start selling as soon as you add a product.
           </p>
           <Button className="mt-4 mb-3">
-            <Link href="/products/newProduct">Add Product</Link>
+            <Link href="/products/newProduct">+ Add Product</Link>
           </Button>
         </div>
       </div>
