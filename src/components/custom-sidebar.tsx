@@ -18,8 +18,8 @@ const items = [
     url: "/dashboard",
   },
   {
-    title: "Task",
-    url: "#",
+    title: "Products",
+    url: "/products",
   },
   {
     title: "Profile",
