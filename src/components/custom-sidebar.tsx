@@ -58,7 +58,7 @@ const CustomSidebar = () => {
                   />
                 </svg>
               </div>
-              <SidebarGroupLabel className="text-xl">
+              <SidebarGroupLabel className="text-lg">
                 AdminFlow
               </SidebarGroupLabel>
             </div>
