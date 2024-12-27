@@ -22,7 +22,7 @@ export default function RootLayout({
             <CustomSidebar />
           </div>
 
-          <div className="flex-1 overflow-y-auto ">
+          <div className="flex-1 overflow-y-auto">
             <div className="w-full max-w-6xl px-4">{children}</div>
           </div>
         </div>
