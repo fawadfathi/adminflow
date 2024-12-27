@@ -19,7 +19,7 @@ const Products = () => {
             You can start selling as soon as you add a product.
           </p>
           <Button className="mt-4 mb-3">
-            <Link href="/products/new">Add Product</Link>
+            <Link href="/products/newProduct">Add Product</Link>
           </Button>
         </div>
       </div>
