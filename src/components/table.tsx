@@ -2,7 +2,6 @@
 
 import { MoreHorizontal, PanelLeft } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import {
@@ -56,7 +55,7 @@ export function DashboardTable({ product }: ProductTableProps) {
   };
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-muted/40">
+    <div className="flex w-full flex-col bg-muted/40">
       <div className="flex flex-col sm:gap-4">
         <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
           <Sheet>
@@ -104,13 +103,25 @@ export function DashboardTable({ product }: ProductTableProps) {
                       {product.map((pro: Product) => (
                         <TableRow key={pro.id}>
                           <TableCell className="font-medium">
-                            {pro.name}
+                            <input
+                              type="text"
+                              placeholder={`${pro.name}`}
+                              className="text-black placeholder:text-black"
+                            />
                           </TableCell>
-                          <TableCell className="hidden lg:block">
-                            <Badge variant="outline">{pro.category}</Badge>
+                          <TableCell className="hidden lg:block mt-2">
+                            <input
+                              type="text"
+                              placeholder={`${pro.category}`}
+                              className="w-full text-black placeholder:text-black"
+                            />
                           </TableCell>
-                          <TableCell className="text-center text-red-600">
-                            {pro.price}
+                          <TableCell className="text-center">
+                            <input
+                              type="text"
+                              placeholder={`${pro.price}`}
+                              className="max-w-8 placeholder:text-black"
+                            />
                           </TableCell>
                           <TableCell className="hidden md:table-cell text-center">
                             25

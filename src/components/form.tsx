@@ -153,7 +153,10 @@ export const ProductForm = ({ initialData, categories }: ProductFormProps) => {
               )}
             />
           </div>
-          <Button className="ml-auto" type="submit">
+          <Button
+            className="ml-auto bg-violet-600 hover:bg-violet-500"
+            type="submit"
+          >
             Create
           </Button>
         </form>

@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { DashboardTable } from "@/components/table";
+import { getProducts } from "@/lib/products";
 
-const Products = () => {
+export default async function Products() {
+  const products = await getProducts();
+
   return (
     <div className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
       <div className="flex items-center">
@@ -18,13 +22,12 @@ const Products = () => {
           <p className="text-sm text-muted-foreground">
             You can start selling as soon as you add a product.
           </p>
-          <Button className="mt-4 mb-3">
+          <Button className="mt-4 mb-3 bg-violet-600 hover:bg-violet-500">
             <Link href="/products/newProduct">+ Add Product</Link>
           </Button>
         </div>
       </div>
+      <DashboardTable product={products} />
     </div>
   );
-};
-
-export default Products;
+}
