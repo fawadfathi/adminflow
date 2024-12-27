@@ -14,4 +14,4 @@ export const deleteProduct = async (productId: number) => {
   return product;
 };
 
-console.log("hee");
+console.log("heee");
