@@ -31,6 +31,8 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 
+import { deleteProduct } from "@/lib/action";
+
 type Product = {
   id: number;
   name: string;
@@ -49,6 +51,10 @@ export const description =
   "An products dashboard with a sidebar navigation. The sidebar has icon navigation. The content area has a breadcrumb and search in the header. It displays a list of products in a table with actions.";
 
 export function DashboardTable({ product }: ProductTableProps) {
+  const handleDelete = async (productId: number) => {
+    await deleteProduct(productId);
+  };
+
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <div className="flex flex-col sm:gap-4">
@@ -127,7 +133,11 @@ export function DashboardTable({ product }: ProductTableProps) {
                               <DropdownMenuContent align="end">
                                 <DropdownMenuLabel>Actions</DropdownMenuLabel>
                                 <DropdownMenuItem>Edit</DropdownMenuItem>
-                                <DropdownMenuItem>Delete</DropdownMenuItem>
+                                <DropdownMenuItem
+                                  onClick={() => handleDelete(pro.id)}
+                                >
+                                  Delete
+                                </DropdownMenuItem>
                               </DropdownMenuContent>
                             </DropdownMenu>
                           </TableCell>
