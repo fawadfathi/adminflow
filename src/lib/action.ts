@@ -13,3 +13,5 @@ export const deleteProduct = async (productId: number) => {
   revalidatePath("products/newProduct");
   return product;
 };
+
+console.log("hee");
