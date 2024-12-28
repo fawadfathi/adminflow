@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Profile = () => {
+function Profile() {
   return (
     <div className="pb-52 md:pb-28 relative h-full">
       <div className="flex-col items-center h-full py-24">
@@ -64,6 +64,6 @@ const Profile = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Profile;
