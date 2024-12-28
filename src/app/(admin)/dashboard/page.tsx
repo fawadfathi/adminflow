@@ -6,15 +6,15 @@ import { RadarCharts } from "@/components/radar-chart";
 
 const Dashboard = () => {
   return (
-    <div className="block lg:flex md:block">
+    <div className="block mt-8 lg:grid grid-cols-2 md:block">
       <div>
         <div className="space-y-2 pl-5">
           <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-xl tracking-tight">OverView</h2>
+            <h2 className="tracking-tight">OverView</h2>
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsContent value="overview" className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 lg:grid-rows-2">
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
@@ -34,7 +34,7 @@ const Dashboard = () => {
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">$45,231.89</div>
+                    <div className="text-xl font-bold">$45,23</div>
                     <p className="text-xs text-muted-foreground">
                       +20.1% from last month
                     </p>
@@ -61,7 +61,7 @@ const Dashboard = () => {
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">+2350</div>
+                    <div className="text-xl font-bold">+2350</div>
                     <p className="text-xs text-muted-foreground">
                       +180.1% from last month
                     </p>
@@ -85,7 +85,7 @@ const Dashboard = () => {
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">+12,234</div>
+                    <div className="text-xl font-bold">+12,2</div>
                     <p className="text-xs text-muted-foreground">
                       +19% from last month
                     </p>
@@ -110,7 +110,7 @@ const Dashboard = () => {
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">+573</div>
+                    <div className="text-xl font-bold">+573</div>
                     <p className="text-xs text-muted-foreground">
                       +201 since last hour
                     </p>
