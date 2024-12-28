@@ -1,13 +1,14 @@
 "use client";
 
-import { logIn } from "@/lib/action";
+import { login } from "@/lib/actions";
 import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 
 export default function LogIn() {
-  const [state, action, pending] = useActionState(logIn, undefined);
+  const [state, loginAction] = useActionState(login, undefined);
 
   return (
-    <form action={action} className="space-y-7">
+    <form action={loginAction} className="space-y-7">
       <div className="space-y-2">
         <div className="flex justify-center">
           <p className="text-2xl font-semibold">Log In</p>
@@ -20,17 +21,17 @@ export default function LogIn() {
       </div>
 
       <div className="space-y-4">
-        <div className="space-x-5">
+        {/* <div className="space-x-5">
           <input
             id="name"
             name="name"
             placeholder="Name"
             className="pl-1 text-xs w-full max-w-7xl h-8 border"
           />
-        </div>
-        {state?.errors?.name && (
+        </div> */}
+        {/* {state?.errors?.name && (
           <p className="text-red-600 text-xs">{state.errors.name}</p>
-        )}
+        )} */}
         <div className="space-x-5">
           <input
             id="email"
@@ -39,8 +40,8 @@ export default function LogIn() {
             className="pl-1 text-xs w-full max-w-7xl h-8 border"
           />
         </div>
-        {state?.errors?.email && (
-          <p className="text-red-600 text-xs">{state.errors.email}</p>
+        {state?.error?.email && (
+          <p className="text-red-600 text-xs">{state.error.email}</p>
         )}
 
         <div className="space-x-5">
@@ -52,11 +53,11 @@ export default function LogIn() {
             className="pl-1 text-xs w-full max-w-7xl h-8 border"
           />
         </div>
-        {state?.errors?.password && (
+        {state?.error?.password && (
           <div>
             <p className="text-xs">Password must:</p>
             <ul className="text-red-600 text-xs">
-              {state.errors.password.map((error) => (
+              {state.error.password.map((error) => (
                 <li key={error}>- {error}</li>
               ))}
             </ul>
@@ -64,13 +65,21 @@ export default function LogIn() {
         )}
       </div>
 
-      <button
-        disabled={pending}
-        type="submit"
-        className="w-full max-w-7xl bg-violet-600 text-violet-100 p-2 rounded-md text-sm"
-      >
-        Log In
-      </button>
+      <SubmitButton />
     </form>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      disabled={pending}
+      type="submit"
+      className="w-full max-w-7xl bg-violet-600 text-violet-100 p-2 rounded-md text-sm"
+    >
+      Log In
+    </button>
   );
 }
