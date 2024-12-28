@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
+import { logout } from "@/lib/actions";
+
 import {
   Sidebar,
   SidebarContent,
@@ -10,6 +13,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
 
 const items = [
@@ -80,6 +84,19 @@ const CustomSidebar = () => {
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
+
+        <SidebarFooter>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <Button
+                onClick={() => logout()}
+                className="bg-violet-600 hover:bg-violet-500 text-xs"
+              >
+                LogOut
+              </Button>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarFooter>
       </Sidebar>
     </SidebarProvider>
   );

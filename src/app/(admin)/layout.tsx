@@ -1,4 +1,8 @@
+"use client";
+
 import CustomSidebar from "@/components/custom-sidebar";
+import { Button } from "@/components/ui/button";
+import { logout } from "@/lib/actions";
 
 export default function AdminLayout({
   children,
@@ -7,6 +11,7 @@ export default function AdminLayout({
 }) {
   return (
     <div className="flex h-screen">
+      <Button onClick={() => logout()}>LogOut</Button>
       <div className="md:w-64 lg:w-64 bg-gray-100">
         <CustomSidebar />
       </div>
