@@ -15,7 +15,7 @@ export const deleteProduct = async (productId: number) => {
   return product;
 };
 
-export async function signup(state: FormState, formData: FormData) {
+export async function logIn(state: FormState, formData: FormData) {
   const validatedFields = SignupFormSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
