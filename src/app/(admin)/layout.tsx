@@ -42,7 +42,7 @@ export default function AdminLayout({
               <DropdownMenuItem>
                 <Button
                   onClick={() => logout()}
-                  className="bg-violet-600 w-full hover:bg-violet-500 text-xs"
+                  className="bg-red-600 w-full hover:bg-red-500 text-xs"
                 >
                   LogOut
                 </Button>

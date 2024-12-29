@@ -1,8 +1,5 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
-import { logout } from "@/lib/actions";
-
 import {
   Sidebar,
   SidebarContent,
@@ -34,7 +31,7 @@ const items = [
   },
   {
     title: "Settings",
-    url: "#",
+    url: "/settings",
   },
 ];
 
