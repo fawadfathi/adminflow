@@ -1,7 +1,17 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { DashboardTable } from "@/components/table";
 import { getProducts } from "@/lib/products";
+import type { Metadata } from "next";
+import Loading from "@/app/(admin)/loading";
+
+export const metaData: Metadata = {
+  title: "User Products - AminFlow",
+  authors: [{ name: "AdminFlow" }],
+  description:
+    "Manage your product inventory with ease. Add new products, save them to the database, and delete existing ones directly from the dashboard.",
+};
 
 export default async function Products() {
   const products = await getProducts();
@@ -27,7 +37,10 @@ export default async function Products() {
           </Button>
         </div>
       </div>
-      <DashboardTable product={products} />
+
+      <Suspense fallback={<Loading />}>
+        <DashboardTable product={products} />
+      </Suspense>
     </div>
   );
 }

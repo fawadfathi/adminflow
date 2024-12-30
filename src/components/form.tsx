@@ -68,6 +68,10 @@ export const ProductForm = ({ initialData, categories }: ProductFormProps) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     await createProduct(values);
     form.reset();
+
+    if (values) {
+      alert("Product created successfully!");
+    }
   };
 
   return (
