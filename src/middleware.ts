@@ -1,25 +1,42 @@
-import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
-import { decrypt } from "./lib/session";
+import NextAuth from "next-auth";
 
-const protectedRoutes = ["/dashboard", "/products", "/profile"];
-const publicRoutes = ["/"];
+import authConfig from "@/auth.config";
+import {
+  DEFAULT_LOGIN_REDIRECT,
+  apiAuthPrefix,
+  authRoutes,
+  publicRoutes,
+} from "@/routes";
 
-export default async function middleware(req: NextRequest) {
-  const path = req.nextUrl.pathname;
-  const isProtectedRoutes = protectedRoutes.includes(path);
-  const isPublicRoutes = publicRoutes.includes(path);
+const { auth } = NextAuth(authConfig);
 
-  const cookie = (await cookies()).get("session")?.value;
-  const session = await decrypt(cookie);
+export default auth((req) => {
+  const { nextUrl } = req;
+  const isLoggedIn = !!req.auth;
 
-  if (isProtectedRoutes && !session?.userId) {
-    return NextResponse.redirect(new URL("/", req.nextUrl));
+  const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
+  const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
+  const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+
+  if (isApiAuthRoute) {
+    return null;
   }
 
-  if (isPublicRoutes && session?.userId) {
-    return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
+  if (isAuthRoute) {
+    if (isLoggedIn) {
+      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+    }
+    return null;
   }
 
-  return NextResponse.next();
-}
+  if (!isLoggedIn && !isPublicRoute) {
+    return Response.redirect(new URL("/auth/logIn", nextUrl));
+  }
+
+  return null;
+});
+
+// Optionally, don't invoke Middleware on some paths
+export const config = {
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+};

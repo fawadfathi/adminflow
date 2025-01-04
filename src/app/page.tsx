@@ -1,11 +1,20 @@
-import LogIn from "@/components/logIn";
+import { LoginButton } from "@/components/auth/login-button";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="flex bg-sidebar justify-center items-center min-h-screen">
-      <div className="bg-white shadow-md rounded-2xl h-[30rem] max-w-2xl w-[25rem] flex items-center justify-center">
-        <LogIn />
+    <main className="flex h-full flex-col items-center justify-center">
+      <div className="space-y-6 text-center">
+        <h1 className="text-6xl font-semibold">Auth</h1>
+        <p>Authentication Service</p>
+        <div>
+          <LoginButton>
+            <Button variant="secondary" size="lg">
+              Sign In
+            </Button>
+          </LoginButton>
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

@@ -1,5 +1,3 @@
-"use client";
-
 import { CircleUser } from "lucide-react";
 
 import {
@@ -12,7 +10,8 @@ import {
 import { Button } from "@/components/ui/button";
 
 import CustomSidebar from "@/components/custom-sidebar";
-import { logout } from "@/lib/actions";
+
+import { signOut } from "@/auth";
 
 export default function AdminLayout({
   children,
@@ -40,12 +39,19 @@ export default function AdminLayout({
             <DropdownMenuContent align="end">
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <Button
-                  onClick={() => logout()}
-                  className="bg-red-600 w-full hover:bg-red-500 text-xs"
+                <form
+                  action={async () => {
+                    "use server";
+                    await signOut();
+                  }}
                 >
-                  LogOut
-                </Button>
+                  <Button
+                    type="submit"
+                    className="bg-red-600 w-full hover:bg-red-500 text-xs"
+                  >
+                    Sign Out
+                  </Button>
+                </form>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
